@@ -35,7 +35,7 @@ const rpnClass = new calcModule.CalcRPN()
 const res = rpnClass.calcByInput(formula)
 ```
 The method responses this data.
-```json
+```js
 {
   value: result value,
   rpn: the formula converted by RPN
