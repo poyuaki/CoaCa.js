@@ -26,7 +26,8 @@ export class ViewCaC {
       'I\'m Japanese',
       'This program uses RPN',
       'The ( at the end can be omitted.',
-      'you can use a variable, \'x\''
+      'you can use a variable, \'x\'',
+      'you can see RPN result, if you click F12'
     ]
     while (true) {
       hintText.style.opacity = 0

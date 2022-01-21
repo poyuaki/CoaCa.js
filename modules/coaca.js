@@ -289,7 +289,14 @@ export class Coaca {
    * @return {boolean} 正しいかどうか
    */
   isTrueVariableName (name) {
-    return !(!isNaN(name) || name.length > 20 || this.isInVariableList(name))
+    const func = (name) => {
+      for (let i = 0; i < name.length; i++) {
+        const val = name.substring(i, i + 1)
+        if (isOperator(val) || isBracket(val)) return true
+      }
+      return false
+    }
+    return !(!isNaN(name) || name.length > 20 || this.isInVariableList(name) || func(name))
   }
   /**
    * 新しい変数を追加する
