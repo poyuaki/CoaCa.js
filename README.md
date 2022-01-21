@@ -1,6 +1,6 @@
-# CaCRPN.js : Convert and Calculate by RPN
+# CoaCa.js :<br>Convert and Calculate by RPN
 
-<div style="text-align: center">
+<div align="center">
   <a href="./DOC/ドキュメント.md">
     ドキュメント(日本語)
   </a>
@@ -9,7 +9,14 @@
 ## Attention!
 I do not understand English perfectly, so I sometimes use translating application, 'deepl'. But I may make mistakes, so if you realize my mistake, please tell me!
 
-## What's CaCRPN.js?
+## Todo(Japanese)
+- [ ] 英語への対応
+- [ ] 三角関数、階乗などに対応
+- [ ] 対数のルールに従う
+- [ ] カッコの終わりがなかった場合自動的に式の一番最後に追加
+
+
+## What's CoaCa.js?
 This is the library can convert Infix Notation with Reverse Polish Notation(RPN) and calculate by RPN.
 
 ## Usage
@@ -30,23 +37,20 @@ import * as calcModule from './modules/calcRPN.js'
 const rpnClass = new calcModule.CalcRPN()
 ```
 
+### Set formula
+```js
+rpnClass.setFormula(val)
+```
+
+### Convert to RPN
+```js
+rpnClass.convertToRPN()
+```
+
 ### Calculate
 ```js
-const res = rpnClass.calcByInput(formula)
+const res = rpnClass.rpnCalc()
 ```
-The method responses this data.
-```js
-{
-  value: result value,
-  rpn: the formula converted by RPN
-  measure: calculate time
-}
-```
-If you want to get only result value, you should write this.
-```js
-const resVal = rpnClass.calcByInput(formula).value
-```
-In my opinion, you must store the result in the variable.
 
 ### About "variable"
 ※The term "variable" here has a mathematical connotation.
@@ -69,12 +73,12 @@ rpnClass.crateVariable('x', 10)
 ```
 If set same one of variables already setting, the method throw a error.
 
-#### Change value
+#### Changes the value of the variable
 ```js
 rpnClass.changeVariable('x', 50)
 ```
 
-#### Remove value
+#### Removes the variable
 ```js
 rpnClass.removeVariable('x')
 ```
@@ -83,11 +87,12 @@ rpnClass.removeVariable('x')
 #### Usage
 ```js
 const formula = '3*(1+x)'
-
 const rpnClass = new calcModule.CalcRPN()
 rpnClass.createVariable('x', 9)
-const res = rpnClass.calcByInput(formula)
-console.log(res.value) // 30
+rpnClass.setFormula(formula)
+rpnClass.convertToRPN()
+const res = rpnClass.rpnCalc()
+console.log(res)
 ```
 
 ## About formula
@@ -102,6 +107,6 @@ This library use original operators. Show operators using.
 
 ### Usage
 ```js
-// It is same '(log[2]2^3)*2-6'
+// It is same '(log[2](2^3))*2-6'
 ((2^3)_2)*2-6 // result: 0
 ```
