@@ -49,7 +49,8 @@ function setOperatorAndNum (formula) {
   let add = ''
   let flag = false
   for (let i = 0; i < formula.length; i++) {
-    const val = formula.substring(i, i + 1)
+    let val = formula.substring(i, i + 1)
+    val = val.replace(/\s+/g, "")
     if (!isOperator(val) && !isBracket(val)) {
       add += val
     } else {
@@ -172,6 +173,9 @@ export class Coaca {
     let flag = false // 初回かどうかのフラグ(演算子)
     for (let i = 0; i < valList.length; i++) {
       const val = valList[i]
+      if (!this.isInVariableList(val) && !isOperator(val) && !isBracket(val) && isNaN(val)) {
+        throw  `Undefined character,'${val}'. please check the formula.`
+      }
       if (val === '') continue // よくわからん原因で空白が出るのでとりまcontinue
       if (!isOperator(val) && !isBracket(val)) { // もしも数値なら
         res.push(val) // とりまAdo
@@ -347,7 +351,6 @@ export class Coaca {
           this.rpnArr[i] = this.variableList[k].value
           break
         }
-        if (this.isBecomeVariable(this.rpnArr[i]) && !this.isInVariableList(this.rpnArr[i])) throw 'Why you input the unknown variable in the formula?'
       }
     }
   }
