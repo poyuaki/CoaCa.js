@@ -1,4 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&family=Nunito+Sans:wght@300&display=swap');
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  background: linear-gradient(#0f1014, #04092b);
+  width: 100vw;
+  height: 100vh;
+  color: #cdced5;
+  margin: 0;
+  padding: 5px;
+}
+
+.header-box {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 3.5rem;
+  text-align: center;
+}
+
+.header-subtitle {
+  margin: 0;
+  text-align: center;
+  color: #9a9ba0;
+}
+
+.header-subtitle::after, .header-subtitle::before {
+  content: "-"
+}
 
 .calc-input {
   border: none;
@@ -7,7 +37,8 @@
   width: 100%;
   height: 2.5rem;
   font-size: 2.4rem;
-  font-family: 'DotGothic16';
+  background: rgba(0, 0, 0, 0);
+  color: #cdced5;
 }
 
 .calc-input:focus {
@@ -20,12 +51,16 @@
 .submit-calc {
   border: none;
   border-radius: 10px;
-  background-color: #b5c2ea;
+  background: rgba(0, 0, 0, 0);
+  border: solid 1px #385bc7;
   font-size: 2rem;
   opacity: 1;
   transition: opacity .5s;
-  margin-top: 10px;
+  margin-top: 1rem;
+  padding: 7px;
+  margin-right: 1rem;
   cursor: pointer;
+  color: #9a9ba0;
 }
 
 .submit-calc:hover {
