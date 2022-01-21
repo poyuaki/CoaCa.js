@@ -39,6 +39,7 @@ body {
   font-size: 2.4rem;
   background: rgba(0, 0, 0, 0);
   color: #cdced5;
+  padding-left: 10px;
 }
 
 .calc-input:focus {
@@ -60,11 +61,22 @@ body {
   padding: 7px;
   margin-right: 1rem;
   cursor: pointer;
-  color: #9a9ba0;
+  color: #cdced5;
 }
 
 .submit-calc:hover {
   opacity: .7;
+}
+
+.hint-text {
+  text-align: center;
+  font-size: 1.5rem;
+  transition: opacity .5s;
+  color: #9a9ba0;
+}
+
+.hint-text::before {
+  content: 'hint : '
 }
 
 .calc-result-text {

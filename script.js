@@ -3,6 +3,8 @@ import * as viewModule from './modules/view.js' // It just show result.
 
 const viewClass = new viewModule.ViewCaC()
 
+viewClass.viewHintText()
+
 document.getElementById('submitCalc').addEventListener('click', e => {
   const ele = document.getElementById('calcInput')
   const val = ele.value // form value

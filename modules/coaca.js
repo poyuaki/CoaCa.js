@@ -201,6 +201,10 @@ export class Coaca {
             endIndex = j
             break
           }
+          if (j + 1 === valList.length) { // カッコが閉じられてない場合
+            endIndex = j + 1
+            break
+          }
         }
         const subFormula = valList.slice(startIndex, endIndex).join('') // 丸括弧内の文字列を取得
         res.push(...this.convertToRPN(subFormula)) // 丸括弧内の計算式を逆ポーランドに変換
