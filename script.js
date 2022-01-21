@@ -1,4 +1,4 @@
-import * as calcModule from './modules/calcRPN.js'
+import * as CoacaModule from './modules/coaca.js'
 import * as viewModule from './modules/view.js' // It just show result.
 
 const viewClass = new viewModule.ViewCaC()
@@ -8,18 +8,18 @@ document.getElementById('submitCalc').addEventListener('click', e => {
   const val = ele.value // form value
   try {
     // instantiate
-    const rpnClass = new calcModule.CalcRPN()
+    const coacaClass = new CoacaModule.Coaca()
     /* control variables */
-    rpnClass.crateVariable('x', 10)
-    rpnClass.changeVariable('x', 50)
-    rpnClass.crateVariable('y', 100)
-    rpnClass.removeVariable('y')
-    rpnClass.setFormula(val) // set a formula
-    rpnClass.convertToRPN() // convert to RPN
-    const res = rpnClass.rpnCalc() // calculate
+    coacaClass.crateVariable('x', 10)
+    coacaClass.changeVariable('x', 50)
+    coacaClass.crateVariable('y', 100)
+    coacaClass.removeVariable('y')
+    coacaClass.setFormula(val) // set a formula
+    coacaClass.convertToRPN() // convert to RPN
+    const res = coacaClass.rpnCalc() // calculate
     viewClass.viewCalcRes(res) // view result
     console.log(`res : ${res}`)
-    console.log(`rpn : ${rpnClass.rpnArr.join(' ')}`)
+    console.log(`rpn : ${coacaClass.rpnArr.join(' ')}`)
   } catch (e) {
     viewClass.viewCalcRes('Error!') // view error message
     console.error(e)

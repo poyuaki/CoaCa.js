@@ -125,7 +125,7 @@ function isTrueExp (tar) {
   return true
 }
 
-export class CalcRPN {
+export class Coaca {
   constructor () {
     this.init()
   }
