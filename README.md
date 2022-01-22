@@ -69,7 +69,7 @@ This library support default variable.
 
 #### Create and set
 ```js
-coacaClass.crateVariable('x', 10)
+coacaClass.createVariable('x', 10)
 ```
 If set same one of variables already setting, the method throw a error.
 
