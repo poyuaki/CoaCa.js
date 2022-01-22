@@ -29,27 +29,27 @@ It follow an object-oriented approach.
 
 ### Import
 ```js
-import * as calcModule from './modules/calcRPN.js'
+import * as CoacaModule from './modules/coaca.js'
 ```
 
 ### Instantiate
 ```js
-const rpnClass = new calcModule.CalcRPN()
+const coacaClass = new CoacaModule.Coaca()
 ```
 
 ### Set formula
 ```js
-rpnClass.setFormula(val)
+coacaClass.setFormula(val)
 ```
 
 ### Convert to RPN
 ```js
-rpnClass.convertToRPN()
+coacaClass.convertToRPN()
 ```
 
 ### Calculate
 ```js
-const res = rpnClass.rpnCalc()
+const res = coacaClass.rpnCalc()
 ```
 
 ### About "variable"
@@ -69,30 +69,30 @@ This library support default variable.
 
 #### Create and set
 ```js
-rpnClass.crateVariable('x', 10)
+coacaClass.crateVariable('x', 10)
 ```
 If set same one of variables already setting, the method throw a error.
 
 #### Changes the value of the variable
 ```js
-rpnClass.changeVariable('x', 50)
+coacaClass.changeVariable('x', 50)
 ```
 
 #### Removes the variable
 ```js
-rpnClass.removeVariable('x')
+coacaClass.removeVariable('x')
 ```
 
 
 #### Usage
 ```js
 const formula = '3*(1+x)'
-const rpnClass = new calcModule.CalcRPN()
-rpnClass.createVariable('x', 9)
-rpnClass.setFormula(formula)
-rpnClass.convertToRPN()
-const res = rpnClass.rpnCalc()
-console.log(res)
+const coacaClass = new CoacaModule.Coaca()
+coacaClass.createVariable('x', 9)
+coacaClass.setFormula(formula)
+coacaClass.convertToRPN()
+const res = coacaClass.rpnCalc()
+console.log(res) // 30
 ```
 
 ## About formula
@@ -110,3 +110,42 @@ This library use original operators. Show operators using.
 // It is same '(log[2](2^3))*2-6'
 ((2^3)_2)*2-6 // result: 0
 ```
+
+## Example
+### Heron's formula
+```js
+import * as CoacaModule from './modules/coaca.js'
+
+const variableList = {
+  a: 15,
+  b: 13,
+  c: 14
+}
+
+const setVariable =  (classVal, variableList) => {
+  const resClass = classVal
+  for (const key in variableList) {
+    resClass.createVariable(key, variableList[key])
+  }
+  return resClass
+}
+
+/* Find the variable s */
+let coacaClassS = new CoacaModule.Coaca()
+coacaClassS = setVariable(coacaClassS, variableList) // set variables
+coacaClassS.setFormula('(a+b+c)/2') // set a formula
+coacaClassS.convertToRPN()
+variableList.s = coacaClassS.rpnCalc() // set a variable, 's'
+
+/* Find a result */
+let coacaClassR = new CoacaModule.Coaca()
+const formula = '(s*(s-a)*(s-b)*(s-c))^(1/2)'
+coacaClassR = setVariable(coacaClassR, variableList)
+coacaClassR.setFormula(formula)
+coacaClassR.convertToRPN()
+const res = coacaClassR.rpnCalc()
+console.log(res) // res : 84
+
+```
+
+Tips: If you want to use square root, you write '^(1/2)'.

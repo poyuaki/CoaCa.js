@@ -13,11 +13,11 @@ function errorFlow (e) {
 // instantiate
 const coacaClass = new CoacaModule.Coaca()
 
+
 try {
-  /* control variables */
-  coacaClass.crateVariable('x', 10)
+  coacaClass.createVariable('x', 10)
   coacaClass.changeVariable('x', 50)
-  coacaClass.crateVariable('y', 100)
+  coacaClass.createVariable('y', 100)
   coacaClass.removeVariable('y')
 } catch (e) {
   errorFlow(e)

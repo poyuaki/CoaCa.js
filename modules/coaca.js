@@ -306,7 +306,7 @@ export class Coaca {
    * @param {string} name 変数名
    * @param {number} value 初期値
    */
-  crateVariable (name, value) {
+  createVariable (name, value) {
     const isTrueFormat = this.isTrueVariableName(name) // 変数名が正しい形式かどうか
     if (isTrueFormat) {
       this.variableList.push({
